@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:hero_jam_2021/providers/user_notifier.dart';
+import 'package:provider/provider.dart';
 
 import 'screens/first_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserModel(),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
