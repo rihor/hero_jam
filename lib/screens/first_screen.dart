@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:hero_jam_2021/providers/user_notifier.dart';
+import 'package:hero_jam_2021/providers/coach_model.dart';
 import 'package:provider/provider.dart';
 
 class FirstScreen extends StatelessWidget {
@@ -10,7 +9,7 @@ class FirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Provider.of<UserModel>(context).getName() ??
+        title: Text(Provider.of<CoachModel>(context).getName() ??
             "don't have a name yet"),
       ),
       body: Container(
@@ -18,17 +17,10 @@ class FirstScreen extends StatelessWidget {
           children: [
             TextField(
               onChanged: (String text) {
-                Provider.of<UserModel>(context, listen: false).changeName(text);
+                Provider.of<CoachModel>(context, listen: false)
+                    .changeName(text);
               },
             ),
-            ElevatedButton(
-                onPressed: () async {
-                  Position? positionCaught =
-                      await Provider.of<UserModel>(context, listen: false)
-                          .updateLocation();
-                  print(positionCaught);
-                },
-                child: Text('Pegar posição'))
           ],
         ),
       ),

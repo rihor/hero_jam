@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hero_jam_2021/providers/user_notifier.dart';
+import 'package:hero_jam_2021/providers/coach_model.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/first_screen.dart';
@@ -9,7 +9,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => UserModel(),
+          create: (_) => CoachModel(),
         ),
       ],
       child: MyApp(),
