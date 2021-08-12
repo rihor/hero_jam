@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hero_jam_2021/providers/coach_model.dart';
+import 'package:hero_jam_2021/screens/player_screen.dart';
 import 'package:provider/provider.dart';
-
-import 'screens/first_screen.dart';
 
 void main() {
   runApp(
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       // TODO: Create a Theme for the app
       theme: ThemeData.light().copyWith(),
-      routes: {'/': (context) => const FirstScreen()},
+      routes: {'/': (context) => const PlayerScreen()},
     );
   }
 }
