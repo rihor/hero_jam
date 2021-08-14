@@ -54,7 +54,7 @@ class _DraggablePlayerState extends State<DraggablePlayer>
       damping: 2,
     );
 
-    final simulation = SpringSimulation(spring, 0, 1, -1000);
+    final simulation = SpringSimulation(spring, 0, 1, 0);
 
     _controller.animateWith(simulation);
   }
