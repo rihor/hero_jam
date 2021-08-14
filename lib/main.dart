@@ -26,8 +26,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Kickoff',
       initialRoute: '/login',
-      themeMode: ThemeMode.light,
-      theme: ThemeData.dark().copyWith(),
+      themeMode: ThemeMode.dark,
+      theme: ThemeData.dark().copyWith(
+        textTheme: ThemeData.dark().textTheme.apply(
+              fontFamily: 'Montserrat',
+            ),
+        primaryTextTheme: ThemeData.dark().textTheme.apply(
+              fontFamily: 'Montserrat',
+            ),
+        accentTextTheme: ThemeData.dark().textTheme.apply(
+              fontFamily: 'Montserrat',
+            ),
+      ),
       navigatorKey: Utils.mainAppNav,
       routes: {
         '/login': (context) => const LoginScreen(),
