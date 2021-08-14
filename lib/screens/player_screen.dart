@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:hero_jam_2021/components/bottom_navigation.dart';
 import 'package:hero_jam_2021/components/card_player_info.dart';
 import 'package:hero_jam_2021/components/card_player_macros.dart';
 import 'package:hero_jam_2021/components/card_player_micros.dart';
 import 'package:hero_jam_2021/components/header_go_back.dart';
 import 'package:hero_jam_2021/components/header_player_detail.dart';
 import 'package:hero_jam_2021/components/right_align_item.dart';
+import 'package:hero_jam_2021/helpers/utils.dart';
 import 'package:hero_jam_2021/providers/players_model.dart';
 import 'package:provider/provider.dart';
 
@@ -17,13 +17,19 @@ class PlayerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Player? player = Provider.of<PlayersModel>(context).getSelectedPlayer();
 
-    return Scaffold(
-      bottomNavigationBar: BottomNavigation(),
-      body: Padding(
+    void handleGoBack() {
+      Utils.bottomNav.currentState?.pop();
+    }
+
+    return Container(
+      color: Color(0xFF0D0D0D),
+      child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 32, vertical: 60),
         child: Column(
           children: [
-            GoBackHeader(),
+            GoBackHeader(
+              onGoBack: handleGoBack,
+            ),
             SizedBox(
               height: 38,
             ),
@@ -57,7 +63,6 @@ class PlayerScreen extends StatelessWidget {
                                   title: Text('Avaliação física'),
                                   trailing: Text('12/09/21'),
                                   contentPadding: EdgeInsets.all(16),
-                                  tileColor: Colors.grey[200],
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -69,7 +74,6 @@ class PlayerScreen extends StatelessWidget {
                                   title: Text('Campeonato'),
                                   trailing: Text('12/09/21'),
                                   contentPadding: EdgeInsets.all(16),
-                                  tileColor: Colors.grey[200],
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -81,7 +85,6 @@ class PlayerScreen extends StatelessWidget {
                                   title: Text('Avaliação técnica'),
                                   trailing: Text('12/09/21'),
                                   contentPadding: EdgeInsets.all(16),
-                                  tileColor: Colors.grey[200],
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -93,7 +96,6 @@ class PlayerScreen extends StatelessWidget {
                                   title: Text('Avaliação física'),
                                   trailing: Text('12/09/21'),
                                   contentPadding: EdgeInsets.all(16),
-                                  tileColor: Colors.grey[200],
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -108,7 +110,7 @@ class PlayerScreen extends StatelessWidget {
                             'Ver mais',
                             style: TextStyle(
                               decoration: TextDecoration.underline,
-                              color: Colors.black87,
+                              color: Colors.white,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
@@ -135,150 +137,6 @@ class PlayerScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  // Expanded(
-                  //   child: Column(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children: [
-                  //       Container(
-                  //         color: Colors.grey[200],
-                  //         padding: EdgeInsets.all(15),
-                  //         child: Column(
-                  //           crossAxisAlignment: CrossAxisAlignment.start,
-                  //           children: [
-                  //             Text(
-                  //               'Perfil de Jogador',
-                  //               style: TextStyle(
-                  //                 fontSize: 36,
-                  //                 fontWeight: FontWeight.bold,
-                  //               ),
-                  //             ),
-                  //             Container(
-                  //               child: Column(
-                  //                 mainAxisAlignment: MainAxisAlignment.start,
-                  //                 crossAxisAlignment: CrossAxisAlignment.start,
-                  //                 children: [
-                  //                   Row(
-                  //                     children: [
-                  //                       Text('Altura'),
-                  //                       SizedBox(
-                  //                         width: 12,
-                  //                       ),
-                  //                       Text('173cm'),
-                  //                     ],
-                  //                   ),
-                  //                   Row(
-                  //                     children: [
-                  //                       Text('Peso'),
-                  //                       SizedBox(
-                  //                         width: 12,
-                  //                       ),
-                  //                       Text('67kg'),
-                  //                     ],
-                  //                   ),
-                  //                   Row(
-                  //                     children: [
-                  //                       Text('Posição principal'),
-                  //                       SizedBox(
-                  //                         width: 12,
-                  //                       ),
-                  //                       Text('Atacante'),
-                  //                     ],
-                  //                   ),
-                  //                   Row(
-                  //                     children: [
-                  //                       Text('Posições secundárias'),
-                  //                       SizedBox(
-                  //                         width: 12,
-                  //                       ),
-                  //                       Text('Lateral direito, Zagueiro'),
-                  //                     ],
-                  //                   ),
-                  //                   Row(
-                  //                     children: [
-                  //                       Text('Time dos sonhos'),
-                  //                       SizedBox(
-                  //                         width: 12,
-                  //                       ),
-                  //                       Text('Santos'),
-                  //                     ],
-                  //                   )
-                  //                 ],
-                  //               ),
-                  //             )
-                  //           ],
-                  //         ),
-                  //       ),
-                  //       Container(
-                  //         color: Colors.grey[200],
-                  //         padding: EdgeInsets.all(15),
-                  //         child: Column(
-                  //           crossAxisAlignment: CrossAxisAlignment.start,
-                  //           children: [
-                  //             Text(
-                  //               'Macros',
-                  //               style: TextStyle(
-                  //                 fontWeight: FontWeight.bold,
-                  //                 fontSize: 36,
-                  //               ),
-                  //             ),
-                  //             Column(
-                  //               children: [
-                  //                 Row(
-                  //                   children: [
-                  //                     Text('Total de gols em campeonato'),
-                  //                     Text('100')
-                  //                   ],
-                  //                 ),
-                  //                 Row(
-                  //                   children: [
-                  //                     Text('Total de gols em treinos'),
-                  //                     Text('200')
-                  //                   ],
-                  //                 ),
-                  //                 Row(
-                  //                   children: [Text('Faltas'), Text('10')],
-                  //                 ),
-                  //                 Row(
-                  //                   children: [Text('Penaltis'), Text('0')],
-                  //                 ),
-                  //               ],
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       ),
-                  //       Container(
-                  //         color: Colors.grey[200],
-                  //         child: Column(
-                  //           children: [
-                  //             Text(
-                  //               'Micros',
-                  //               style: TextStyle(
-                  //                 fontWeight: FontWeight.bold,
-                  //                 fontSize: 36,
-                  //               ),
-                  //             ),
-                  //             Column(
-                  //               children: [
-                  //                 Row(
-                  //                   children: [
-                  //                     Text('Domínio de bola'),
-                  //                     LinearProgressIndicator(
-                  //                       backgroundColor: Colors.transparent,
-                  //                       color: Color(0xFF03DAC5),
-                  //                       value: 30,
-                  //                     ),
-                  //                   ],
-                  //                 ),
-                  //               ],
-                  //             )
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                 ],
               ),
             ),
@@ -289,6 +147,7 @@ class PlayerScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
+                  primary: Color(0xFFA60512),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
                   ),
@@ -296,8 +155,21 @@ class PlayerScreen extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.add),
-                    Text('NOVO RELATÓRIO'),
+                    Icon(
+                      Icons.add,
+                      size: 26,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'NOVO RELATÓRIO',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                   ],
                 ),
               ),

@@ -12,7 +12,7 @@ class PlayerInfoCard extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(4.0),
         ),
-        color: Color(0xFFFCFCFC),
+        color: Colors.grey,
       ),
       padding: EdgeInsets.all(20),
       child: Column(
