@@ -9,15 +9,20 @@ class PlayersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Color(0xFF0D0D0D),
       padding: EdgeInsets.all(38),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(
+            height: 24,
+          ),
           Text(
             'Meus Jogadores',
             style: TextStyle(
-              fontWeight: FontWeight.w300,
-              fontSize: 96,
+              fontWeight: FontWeight.bold,
+              fontSize: 48,
+              fontFamily: 'Montserrat',
             ),
           ),
           Expanded(
@@ -34,7 +39,7 @@ class PlayersScreen extends StatelessWidget {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.green[50],
+                      color: Colors.white12,
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Column(
