@@ -8,4 +8,6 @@ class Utils {
       GlobalKey(debugLabel: "BottomNav");
   static GlobalKey<NavigatorState> mainAppNav =
       GlobalKey(debugLabel: "MainAppNav");
+
+  static GlobalKey<FormState> formKey = GlobalKey(debugLabel: "FormLogin");
 }

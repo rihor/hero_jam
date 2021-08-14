@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hero_jam_2021/screens/login_page.dart';
+import 'package:hero_jam_2021/screens/login_screen.dart';
 import 'package:hero_jam_2021/screens/main_page.dart';
 import 'package:provider/provider.dart';
 
@@ -27,10 +27,10 @@ class MyApp extends StatelessWidget {
       title: 'Kickoff',
       initialRoute: '/login',
       themeMode: ThemeMode.light,
-      theme: ThemeData.light().copyWith(),
+      theme: ThemeData.dark().copyWith(),
       navigatorKey: Utils.mainAppNav,
       routes: {
-        '/login': (context) => const LoginPage(),
+        '/login': (context) => const LoginScreen(),
         '/main': (context) => const MainPage(),
         // '/player': (context) => const PlayerScreen(),
         // '/players': (context) => const PlayersScreen(),
