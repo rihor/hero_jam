@@ -49,7 +49,7 @@ class _DraggablePlayerState extends State<DraggablePlayer>
         .drive(Tween<Offset>(begin: _position, end: widget.player.position));
 
     const spring = SpringDescription(
-      mass: 30,
+      mass: 50,
       stiffness: 2,
       damping: 2,
     );

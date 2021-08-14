@@ -141,7 +141,7 @@ class GamePlayer {
 
   void defineWidget(
       {required void Function(void Function() fn) setState,
-      required Function runAnimation}) {
+      required void Function() runAnimation}) {
     _widgetSetState = setState;
     _widgetRefreshPosition = (Offset newPosition) {
       position = newPosition;
