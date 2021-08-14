@@ -7,12 +7,16 @@ import 'package:hero_jam_2021/components/card_player_micros.dart';
 import 'package:hero_jam_2021/components/header_go_back.dart';
 import 'package:hero_jam_2021/components/header_player_detail.dart';
 import 'package:hero_jam_2021/components/right_align_item.dart';
+import 'package:hero_jam_2021/providers/players_model.dart';
+import 'package:provider/provider.dart';
 
 class PlayerScreen extends StatelessWidget {
   const PlayerScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Player? player = Provider.of<PlayersModel>(context).getSelectedPlayer();
+
     return Scaffold(
       bottomNavigationBar: BottomNavigation(),
       body: Padding(
@@ -23,7 +27,7 @@ class PlayerScreen extends StatelessWidget {
             SizedBox(
               height: 38,
             ),
-            PlayerDetailHeader(),
+            player != null ? PlayerDetailHeader(player: player) : Container(),
             SizedBox(
               height: 30,
             ),

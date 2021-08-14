@@ -3,8 +3,8 @@ import 'package:hero_jam_2021/components/bottom_navigation.dart';
 import 'package:hero_jam_2021/providers/players_model.dart';
 import 'package:provider/provider.dart';
 
-class PlayersScreen extends StatelessWidget {
-  const PlayersScreen({Key? key}) : super(key: key);
+class GamesScreen extends StatelessWidget {
+  const GamesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +25,8 @@ class PlayersScreen extends StatelessWidget {
             Expanded(
               child: GridView.builder(
                 itemBuilder: (context, index) {
-                  final player =
-                      Provider.of<PlayersModel>(context, listen: false)
-                          .players[index];
-
                   return GestureDetector(
                     onTap: () {
-                      Provider.of<PlayersModel>(context, listen: false)
-                          .selectPlayer(player.id);
                       Navigator.pushNamed(context, '/player');
                     },
                     child: Container(
@@ -44,9 +38,13 @@ class PlayersScreen extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Hero(
-                              tag: player.name,
+                              tag: Provider.of<PlayersModel>(context)
+                                  .players[index]
+                                  .name,
                               child: Image(
-                                image: player.image,
+                                image: Provider.of<PlayersModel>(context)
+                                    .players[index]
+                                    .image,
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -54,7 +52,9 @@ class PlayersScreen extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              player.name,
+                              Provider.of<PlayersModel>(context)
+                                  .players[index]
+                                  .name,
                               style: TextStyle(
                                 fontSize: 26,
                               ),
@@ -70,7 +70,7 @@ class PlayersScreen extends StatelessWidget {
                   childAspectRatio: 4 / 2,
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20,
-                  maxCrossAxisExtent: 400,
+                  maxCrossAxisExtent: 800,
                 ),
               ),
             ),

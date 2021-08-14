@@ -17,6 +17,7 @@ class Player {
 }
 
 class PlayersModel extends ChangeNotifier {
+  Player? _selectedPlayer;
   List<Player> players = [
     Player(
         name: 'Josélito',
@@ -107,6 +108,15 @@ class PlayersModel extends ChangeNotifier {
         position: 'Goleiro',
         image: AssetImage('images/goleiro-1.png')),
   ];
+
+  Player? getSelectedPlayer() {
+    return _selectedPlayer;
+  }
+
+  void selectPlayer(String id) {
+    _selectedPlayer = players.where((element) => element.id == id).first;
+    notifyListeners();
+  }
 
   List<Player> shufflePlayers() {
     final random = Random();

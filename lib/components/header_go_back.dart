@@ -8,7 +8,9 @@ class GoBackHeader extends StatelessWidget {
     return Row(
       children: [
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           child: Icon(Icons.chevron_left),
           style: ElevatedButton.styleFrom(
             shape: CircleBorder(),
