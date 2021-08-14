@@ -15,12 +15,12 @@ class _GameFieldState extends State<GameField> {
   void initState() {
     _controller = GameController(
       players: <GamePlayer>[
-        GamePlayer(position: Point<double>(200, 200)),
-        GamePlayer(position: Point<double>(100, 100)),
-        GamePlayer(position: Point<double>(500, 100)),
-        GamePlayer(position: Point<double>(400, 200)),
-        GamePlayer(position: Point<double>(150, 300)),
-        GamePlayer(position: Point<double>(450, 300)),
+        GamePlayer(position: Offset(200, 200)),
+        GamePlayer(position: Offset(100, 100)),
+        GamePlayer(position: Offset(500, 100)),
+        GamePlayer(position: Offset(400, 200)),
+        GamePlayer(position: Offset(150, 300)),
+        GamePlayer(position: Offset(450, 300)),
       ],
       refreshWidget: setState,
     );
@@ -45,7 +45,7 @@ class GameController {
   List<GamePlayer> players;
   GamePlayer? _draggedPlayer;
   GamePlayer? _draggedOverPlayer;
-  Point<double>? _dragPos;
+  Offset? _dragPos;
   Function refreshWidget;
 
   GameController({required this.players, required this.refreshWidget});
@@ -84,7 +84,7 @@ class GameController {
     _draggedOverPlayer = null;
   }
 
-  void updateDrag(Point<double> position) {
+  void updateDrag(Offset position) {
     _dragPos = position;
     _checkAllPlayersDragOver();
   }
@@ -102,11 +102,11 @@ class GameController {
 
 class GamePlayer {
   Key key = Key(_randomString(10));
-  Point<double> position;
-  bool isBeingDragged = false;
+  bool _isBeingDragged = false;
+  late void Function(void Function() fn) _widgetSetState;
+  late Function(Offset position) _widgetRefreshPosition;
+  Offset position;
   bool hasDragOver = false;
-  late Function _widgetSetState;
-  late Function _widgetRefreshPosition;
 
   bool _setDragOver(dragOver) {
     _widgetSetState(() {
@@ -116,33 +116,37 @@ class GamePlayer {
   }
 
   void startDrag() {
-    isBeingDragged = true;
+    _isBeingDragged = true;
   }
 
   void endDrag() {
-    isBeingDragged = false;
+    _isBeingDragged = false;
   }
 
-  void setPosition(Point<double> newPosition) {
+  void setPosition(Offset newPosition) {
     _widgetSetState(() {
-      position = newPosition;
       hasDragOver = false;
     });
-    _widgetRefreshPosition();
+    _widgetRefreshPosition(newPosition);
   }
 
-  bool checkDragOver(Point<double> dragPos) {
-    if (isBeingDragged) return _setDragOver(false);
+  bool checkDragOver(Offset dragPos) {
+    if (_isBeingDragged) return _setDragOver(false);
 
-    final hotZone = Rectangle(position.x, position.y, 50, 50);
+    final hotZone = Rectangle(position.dx - 15, position.dy - 15, 80, 80);
 
-    return (_setDragOver(hotZone.containsPoint(dragPos + Point(25, 25))));
+    return (_setDragOver(
+        hotZone.containsPoint(Point(dragPos.dx, dragPos.dy) + Point(25, 25))));
   }
 
   void defineWidget(
-      {required Function setState, required Function runAnimation}) {
+      {required void Function(void Function() fn) setState,
+      required Function runAnimation}) {
     _widgetSetState = setState;
-    _widgetRefreshPosition = runAnimation;
+    _widgetRefreshPosition = (Offset newPosition) {
+      position = newPosition;
+      runAnimation();
+    };
   }
 
   GamePlayer({required this.position});

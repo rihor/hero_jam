@@ -20,9 +20,9 @@ class DraggablePlayer extends StatefulWidget {
 class _DraggablePlayerState extends State<DraggablePlayer>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<Point<double>> _animation;
+  late Animation<Offset> _animation;
 
-  late Point<double> _position;
+  late Offset _position;
 
   @override
   void initState() {
@@ -45,8 +45,8 @@ class _DraggablePlayerState extends State<DraggablePlayer>
   }
 
   void _runAnimation() {
-    _animation = _controller.drive(
-        Tween<Point<double>>(begin: _position, end: widget.player.position));
+    _animation = _controller
+        .drive(Tween<Offset>(begin: _position, end: widget.player.position));
 
     const spring = SpringDescription(
       mass: 30,
@@ -62,30 +62,33 @@ class _DraggablePlayerState extends State<DraggablePlayer>
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: _position.y,
-      left: _position.x,
-      child: GestureDetector(
-        onPanDown: (details) {
-          widget.controller.startDrag(widget.player);
-          _controller.stop();
-        },
-        onPanUpdate: (details) {
-          setState(() {
-            _position += Point(details.delta.dx, details.delta.dy);
-            widget.controller.updateDrag(_position);
-          });
-        },
-        onPanEnd: (details) {
-          widget.controller.endDrag();
-          _runAnimation();
-        },
-        child: Container(
-          margin: EdgeInsets.all(50.0),
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-              color: widget.player.hasDragOver ? Colors.blue : Colors.orange,
-              shape: BoxShape.circle),
+      top: 0,
+      left: 0,
+      child: Transform.translate(
+        offset: _position,
+        child: GestureDetector(
+          onPanDown: (details) {
+            widget.controller.startDrag(widget.player);
+            _controller.stop();
+          },
+          onPanUpdate: (details) {
+            setState(() {
+              _position += details.delta;
+              widget.controller.updateDrag(_position);
+            });
+          },
+          onPanEnd: (details) {
+            widget.controller.endDrag();
+            _runAnimation();
+          },
+          child: Container(
+            margin: EdgeInsets.all(50.0),
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+                color: widget.player.hasDragOver ? Colors.blue : Colors.orange,
+                shape: BoxShape.circle),
+          ),
         ),
       ),
     );
