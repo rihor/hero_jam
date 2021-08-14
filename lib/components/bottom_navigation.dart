@@ -20,9 +20,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
       currentIndex: currentIndex,
       onTap: (int nextIndex) {
         if (nextIndex == 0) {
-          Utils.bottomNav.currentState?.pushNamed('/mainpage/players');
+          Utils.bottomNav.currentState?.pushNamed('/players');
         } else {
-          Utils.bottomNav.currentState?.pushNamed('/mainpage/games');
+          Utils.bottomNav.currentState?.pushNamed('/games');
         }
 
         setState(() {
@@ -31,11 +31,17 @@ class _BottomNavigationState extends State<BottomNavigation> {
       },
       items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
+          icon: Icon(
+            Icons.people,
+            size: 30,
+          ),
           label: 'Lista de Jogadores',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.notifications),
+          icon: Icon(
+            Icons.app_registration,
+            size: 30,
+          ),
           label: 'Meus jogos',
         )
       ],
