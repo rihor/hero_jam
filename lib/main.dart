@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'providers/coach_model.dart';
 import 'providers/players_model.dart';
-import 'screens/GamesScreen.dart';
+import 'screens/games_screen.dart';
 import 'screens/player_screen.dart';
 import 'screens/players_screen.dart';
 
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      initialRoute: '/players',
+      initialRoute: '/games',
       themeMode: ThemeMode.light,
       theme: ThemeData.light().copyWith(),
       routes: {
