@@ -5,4 +5,4 @@ const TextStyle TextStyleSmallBold =
     TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
 
 const TextStyle TextStyleHeadingCardBold =
-    TextStyle(fontWeight: FontWeight.bold, fontSize: 36, color: Colors.black87);
+    TextStyle(fontWeight: FontWeight.bold, fontSize: 36);

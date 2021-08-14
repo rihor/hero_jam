@@ -11,8 +11,12 @@ class GoBackHeader extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: onGoBack,
-          child: Icon(Icons.chevron_left),
+          child: Icon(
+            Icons.chevron_left,
+            color: Colors.black87,
+          ),
           style: ElevatedButton.styleFrom(
+            primary: Color(0xFFF2F2F2),
             shape: CircleBorder(),
             padding: EdgeInsets.all(14),
           ),
@@ -25,7 +29,8 @@ class GoBackHeader extends StatelessWidget {
           style: TextStyle(
             letterSpacing: 3,
             fontWeight: FontWeight.normal,
-            fontSize: 14,
+            fontSize: 16,
+            fontFamily: 'Montserrat',
           ),
         )
       ],

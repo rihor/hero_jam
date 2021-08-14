@@ -30,18 +30,15 @@ class PlayerDetailHeader extends StatelessWidget {
               Text(
                 player.name,
                 style: TextStyle(
-                  fontSize: 96,
+                  fontSize: 52,
+                  fontWeight: FontWeight.bold,
                   letterSpacing: -1.5,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w300,
                 ),
               ),
               Text(
                 player.position,
                 style: TextStyle(
                   fontSize: 36,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w300,
                 ),
               )
             ],

@@ -14,9 +14,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Color(0xFF6200EE),
-      fixedColor: Colors.white,
-      unselectedItemColor: Colors.grey[400],
+      backgroundColor: Color(0xFFF2F2F2),
+      fixedColor: Color(0xFFA60512),
+      unselectedItemColor: Color(0xFF0D0D0D),
       currentIndex: currentIndex,
       onTap: (int nextIndex) {
         if (nextIndex == 0) {
@@ -35,7 +35,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             Icons.people,
             size: 30,
           ),
-          label: 'Lista de Jogadores',
+          label: 'Lista de jogadores',
         ),
         BottomNavigationBarItem(
           icon: Icon(

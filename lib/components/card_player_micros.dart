@@ -11,7 +11,7 @@ class PlayerMicrosCard extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(4.0),
         ),
-        color: Color(0xFFFCFCFC),
+        color: Colors.grey,
       ),
       padding: EdgeInsets.all(20),
       child: Column(
@@ -44,6 +44,9 @@ class PlayerMicrosCard extends StatelessWidget {
                 color: Colors.red,
               ),
             ],
+          ),
+          SizedBox(
+            height: 80,
           ),
         ],
       ),
