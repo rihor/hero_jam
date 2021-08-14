@@ -17,7 +17,10 @@ class _GameFieldState extends State<GameField> {
       players: <GamePlayer>[
         GamePlayer(position: Point<double>(200, 200)),
         GamePlayer(position: Point<double>(100, 100)),
+        GamePlayer(position: Point<double>(500, 100)),
+        GamePlayer(position: Point<double>(400, 200)),
         GamePlayer(position: Point<double>(150, 300)),
+        GamePlayer(position: Point<double>(450, 300)),
       ],
       refreshWidget: setState,
     );
