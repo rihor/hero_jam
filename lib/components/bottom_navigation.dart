@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hero_jam_2021/helpers/utils.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({Key? key}) : super(key: key);
@@ -18,6 +19,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
       unselectedItemColor: Colors.grey[400],
       currentIndex: currentIndex,
       onTap: (int nextIndex) {
+        if (nextIndex == 0) {
+          Utils.bottomNav.currentState?.pushNamed('/mainpage/players');
+        } else {
+          Utils.bottomNav.currentState?.pushNamed('/mainpage/games');
+        }
+
         setState(() {
           currentIndex = nextIndex;
         });

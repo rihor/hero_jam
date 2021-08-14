@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class GoBackHeader extends StatelessWidget {
-  const GoBackHeader({Key? key}) : super(key: key);
+  final void Function() onGoBack;
+
+  const GoBackHeader({Key? key, required this.onGoBack}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: onGoBack,
           child: Icon(Icons.chevron_left),
           style: ElevatedButton.styleFrom(
             shape: CircleBorder(),
