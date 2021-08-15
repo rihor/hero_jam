@@ -31,7 +31,13 @@ class GamesScreen extends StatelessWidget {
                   Utils.mainAppNav.currentState?.pushNamed('/game');
                 },
                 icon: Icon(Icons.add),
-                label: Text('NOVO JOGO'),
+                label: Text(
+                  'NOVO JOGO',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               )
             ],
           ),

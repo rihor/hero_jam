@@ -110,7 +110,13 @@ class DashboardScreen extends StatelessWidget {
                             ),
                             ElevatedButton(
                               onPressed: () {},
-                              child: Text('VER MAIS'),
+                              child: Text(
+                                'VER MAIS',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFDD1111),
                                 minimumSize: Size(120, 50),

@@ -48,8 +48,7 @@ class PlayerScreen extends StatelessWidget {
                     'NOVO RELATÓRIO',
                     style: TextStyle(
                       fontSize: 16,
-                      letterSpacing: 3,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 )
