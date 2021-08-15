@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hero_jam_2021/components/animated_sizedbox.dart';
 import 'package:hero_jam_2021/helpers/utils.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -8,12 +9,15 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen>
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom > 200;
+
     return Scaffold(
-      backgroundColor: Color(0xFF0D0D0D),
       resizeToAvoidBottomInset: false,
+      backgroundColor: Color(0xFF0D0D0D),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -22,11 +26,16 @@ class _LoginScreenState extends State<LoginScreen> {
             Image(
               image: AssetImage('images/kickoff_logo.png'),
             ),
+            SizedBox(
+              height: 60,
+            ),
             Image(
               image: AssetImage('images/kickoff_logo2.png'),
             ),
-            SizedBox(
-              height: 200,
+            AnimatedContainer(
+              height: isKeyboardOpen ? 50 : 200,
+              duration: Duration(milliseconds: 200),
+              curve: Curves.easeInOut,
             ),
             Container(
               width: 500,
@@ -36,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     TextFormField(
+                      keyboardAppearance: Brightness.dark,
                       decoration: InputDecoration(
                         labelText: "Email",
                         filled: true,
@@ -54,6 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 24,
                     ),
                     TextFormField(
+                      keyboardAppearance: Brightness.dark,
                       decoration: InputDecoration(
                         labelText: "Password",
                         filled: true,
@@ -117,13 +128,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding: EdgeInsets.all(24),
                           side: BorderSide(
                             width: 1,
-                            color: Color(0xFFF20505),
+                            color: Colors.white,
                           )),
                       onPressed: () {},
                       child: Text(
                         'AINDA NÃO SOU ESCOLINHA',
                         style: TextStyle(
-                          color: Color(0xFFF20505),
+                          color: Colors.white,
                           letterSpacing: 3,
                         ),
                       ),
