@@ -19,10 +19,19 @@ class _BottomNavigationState extends State<BottomNavigation> {
       unselectedItemColor: Color(0xFF0D0D0D),
       currentIndex: currentIndex,
       onTap: (int nextIndex) {
-        if (nextIndex == 0) {
-          Utils.bottomNav.currentState?.pushNamed('/players');
-        } else {
-          Utils.bottomNav.currentState?.pushNamed('/games');
+        if (currentIndex == nextIndex) {
+          return;
+        }
+
+        switch (nextIndex) {
+          case 0:
+            Utils.bottomNav.currentState?.pushNamed('/dashboard');
+            break;
+          case 1:
+            Utils.bottomNav.currentState?.pushNamed('/players');
+            break;
+          case 2:
+            Utils.bottomNav.currentState?.pushNamed('/games');
         }
 
         setState(() {
@@ -30,6 +39,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
         });
       },
       items: [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.dashboard,
+            size: 30,
+          ),
+          label: 'Inicio',
+        ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.people,
