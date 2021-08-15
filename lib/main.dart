@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hero_jam_2021/screens/game_screen.dart';
-import 'package:hero_jam_2021/screens/games_screen.dart';
 import 'package:hero_jam_2021/screens/login_screen.dart';
 import 'package:hero_jam_2021/screens/main_page.dart';
 import 'package:provider/provider.dart';
