@@ -19,6 +19,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
       unselectedItemColor: Color(0xFF0D0D0D),
       currentIndex: currentIndex,
       onTap: (int nextIndex) {
+        if (currentIndex == nextIndex) {
+          return;
+        }
+
         switch (nextIndex) {
           case 0:
             Utils.bottomNav.currentState?.pushNamed('/dashboard');
