@@ -6,8 +6,18 @@ import 'package:hero_jam_2021/screens/players_screen.dart';
 
 import 'games_screen.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
+
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,28 +25,47 @@ class MainPage extends StatelessWidget {
       backgroundColor: Color(0xFF0D0D0D),
       bottomNavigationBar: BottomNavigation(),
       body: Container(
-        child: Navigator(
-          key: Utils.bottomNav,
-          initialRoute: '/players',
-          onGenerateRoute: (RouteSettings settings) {
-            Widget page;
+        child: HeroControllerScope(
+          controller: MaterialApp.createMaterialHeroController(),
+          child: Navigator(
+            key: Utils.bottomNav,
+            initialRoute: '/players',
+            onGenerateRoute: (RouteSettings settings) {
+              Widget page;
 
-            switch (settings.name) {
-              case '/player':
-                page = PlayerScreen();
-                break;
-              case '/games':
-                page = GamesScreen();
-                break;
-              default:
-                page = PlayersScreen();
-                break;
-            }
+              switch (settings.name) {
+                case '/player':
+                  page = PlayerScreen();
+                  break;
+                case '/games':
+                  page = GamesScreen();
+                  break;
+                default:
+                  page = PlayersScreen();
+                  break;
+              }
 
-            return PageRouteBuilder(
-                pageBuilder: (_, __, ___) => page,
-                transitionDuration: const Duration(seconds: 0));
-          },
+              return PageRouteBuilder(
+                  pageBuilder: (_, __, ___) => page,
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    const begin = Offset(1.0, 0);
+                    const end = Offset.zero;
+                    const curve = Curves.ease;
+
+                    final curveTween = CurveTween(curve: curve);
+
+                    final tween =
+                        Tween(begin: begin, end: end).chain(curveTween);
+
+                    // final offsetAnimation = animation.drive(tween);
+
+                    return SlideTransition(
+                        position: animation.drive(tween), child: child);
+                  },
+                  transitionDuration: const Duration(milliseconds: 500));
+            },
+          ),
         ),
       ),
     );
