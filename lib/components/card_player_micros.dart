@@ -24,7 +24,10 @@ class PlayerMicrosCard extends StatelessWidget {
           SizedBox(height: 11),
           Row(
             children: [
-              Text('Domínio de bola'),
+              Container(
+                width: 155,
+                child: Text('Domínio de bola'),
+              ),
               Container(
                 height: 20,
                 width: 90,
@@ -37,16 +40,67 @@ class PlayerMicrosCard extends StatelessWidget {
           ),
           Row(
             children: [
-              Text('Resistência'),
+              Container(
+                width: 155,
+                child: Text('Resistência'),
+              ),
               Container(
                 height: 20,
-                width: 208,
+                width: 140,
                 color: Colors.red,
               ),
             ],
           ),
           SizedBox(
-            height: 80,
+            height: 10,
+          ),
+          Row(
+            children: [
+              Container(
+                width: 155,
+                child: Text('Eficiência de passes'),
+              ),
+              Container(
+                height: 20,
+                width: 25,
+                color: Colors.red,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              Container(
+                width: 155,
+                child: Text('Dribles efetivos'),
+              ),
+              Container(
+                height: 20,
+                width: 130,
+                color: Colors.red,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              Container(
+                width: 155,
+                child: Text('Tomada de bola'),
+              ),
+              Container(
+                height: 20,
+                width: 80,
+                color: Colors.red,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
           ),
         ],
       ),

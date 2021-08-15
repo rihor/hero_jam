@@ -14,15 +14,16 @@ class RowInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          leading,
-          style: TextStyle(
-            fontSize: 18,
+        Flexible(
+          child: Text(
+            leading,
+            style: TextStyle(
+              fontSize: 18,
+            ),
           ),
-        ),
-        SizedBox(
-          width: 12,
         ),
         Text(trailing, style: TextStyleSmallBold),
       ],

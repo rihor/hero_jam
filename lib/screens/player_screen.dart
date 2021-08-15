@@ -59,45 +59,73 @@ class PlayerScreen extends StatelessWidget {
                             child: ListView(
                               shrinkWrap: true,
                               children: [
-                                ListTile(
-                                  title: Text('Avaliação física'),
-                                  trailing: Text('12/09/21'),
-                                  contentPadding: EdgeInsets.all(16),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    color: Colors.grey[700],
+                                  ),
+                                  child: ListTile(
+                                    title: Text('Avaliação física'),
+                                    trailing: Text('12/09/21'),
+                                    contentPadding: EdgeInsets.all(16),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
-                                ListTile(
-                                  title: Text('Campeonato'),
-                                  trailing: Text('12/09/21'),
-                                  contentPadding: EdgeInsets.all(16),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    color: Colors.grey[700],
+                                  ),
+                                  child: ListTile(
+                                    title: Text('Campeonato'),
+                                    trailing: Text('12/09/21'),
+                                    contentPadding: EdgeInsets.all(16),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
-                                ListTile(
-                                  title: Text('Avaliação técnica'),
-                                  trailing: Text('12/09/21'),
-                                  contentPadding: EdgeInsets.all(16),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    color: Colors.grey[700],
+                                  ),
+                                  child: ListTile(
+                                    title: Text('Avaliação técnica'),
+                                    trailing: Text('12/09/21'),
+                                    contentPadding: EdgeInsets.all(16),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
-                                ListTile(
-                                  title: Text('Avaliação física'),
-                                  trailing: Text('12/09/21'),
-                                  contentPadding: EdgeInsets.all(16),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    color: Colors.grey[700],
+                                  ),
+                                  child: ListTile(
+                                    title: Text('Avaliação física'),
+                                    trailing: Text('12/09/21'),
+                                    contentPadding: EdgeInsets.all(16),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
                                   ),
                                 ),
                               ],
