@@ -23,19 +23,21 @@ class _DraggablePlayerState extends State<DraggablePlayer>
   late Animation<Offset> _animation;
 
   late Offset _position;
+  late AssetImage playerImage;
 
   @override
   void initState() {
     super.initState();
     _position = widget.player.position;
-    _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1500));
     _controller.addListener(() {
       setState(() {
         _position = _animation.value;
       });
     });
     widget.player.defineWidget(setState: setState, runAnimation: _runAnimation);
+    playerImage = widget.player.player.image;
   }
 
   @override
@@ -97,7 +99,7 @@ class _DraggablePlayerState extends State<DraggablePlayer>
                 color: widget.player.team == Team.orange
                     ? Colors.orange
                     : Colors.pink,
-                image: DecorationImage(image: widget.player.player.image),
+                image: DecorationImage(image: playerImage),
                 shape: BoxShape.circle),
           ),
         ),

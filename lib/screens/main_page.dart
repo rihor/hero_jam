@@ -31,7 +31,7 @@ class _MainPageState extends State<MainPage> {
           controller: MaterialApp.createMaterialHeroController(),
           child: Navigator(
             key: Utils.bottomNav,
-            initialRoute: '/dashboard',
+            initialRoute: '/game',
             onGenerateRoute: (RouteSettings settings) {
               Widget page;
 
