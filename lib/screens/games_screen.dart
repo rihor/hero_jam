@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hero_jam_2021/components/overlaped_avatars.dart';
+import 'package:hero_jam_2021/constants/typography.dart';
+import 'package:hero_jam_2021/helpers/utils.dart';
 import 'package:hero_jam_2021/providers/players_model.dart';
 import 'package:provider/provider.dart';
 
@@ -7,68 +10,124 @@ class GamesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(38),
+    return Container(
+      color: Color(0xFF0D0D0D),
+      padding: EdgeInsets.symmetric(horizontal: 45, vertical: 62),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Jogos',
-            style: TextStyle(
-              fontWeight: FontWeight.w300,
-              fontSize: 96,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Jogos', style: TextStyleHeading),
+              ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFFDD1111),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {
+                  Utils.mainAppNav.currentState?.pushNamed('/game');
+                },
+                icon: Icon(Icons.add),
+                label: Text('NOVO JOGO'),
+              )
+            ],
+          ),
+          SizedBox(
+            height: 32,
           ),
           Expanded(
-            child: GridView.builder(
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/player');
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.green[50],
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Hero(
-                            tag: Provider.of<PlayersModel>(context)
-                                .players[index]
-                                .name,
-                            child: Image(
-                              image: Provider.of<PlayersModel>(context)
-                                  .players[index]
-                                  .image,
-                              fit: BoxFit.contain,
-                            ),
+            child: ListView.separated(
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white12,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white24,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            Provider.of<PlayersModel>(context)
-                                .players[index]
-                                .name,
-                            style: TextStyle(
-                              fontSize: 26,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OverlapedAvatars(),
+                            SizedBox(
+                              width: 10,
                             ),
-                          ),
-                        )
-                      ],
-                    ),
+                            Text(
+                              'VS',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            OverlapedAvatars(),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(20),
+                        child: Text('Jogo do dia 12/05/2021'),
+                      ),
+                    ],
                   ),
                 );
               },
-              itemCount: Provider.of<PlayersModel>(context).players.length,
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                childAspectRatio: 4 / 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                maxCrossAxisExtent: 800,
-              ),
+              separatorBuilder: (BuildContext context, int index) {
+                if (index != 0 && index % 2 == 0) {
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: new Container(
+                          margin: EdgeInsets.only(left: 10.0, right: 15.0),
+                          child: Divider(
+                            color: Colors.white38,
+                            height: 60,
+                            thickness: 1,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'JOGOS DE ONTEM',
+                        style: TextStyle(
+                          color: Color(0xFF8b8b8b),
+                          letterSpacing: 3,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
+                      ),
+                      Expanded(
+                        child: new Container(
+                          margin: EdgeInsets.only(left: 15.0, right: 10.0),
+                          child: Divider(
+                            color: Colors.white38,
+                            height: 60,
+                            thickness: 1,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+
+                return SizedBox(
+                  height: 32,
+                );
+              },
             ),
           ),
         ],
