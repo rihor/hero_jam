@@ -93,12 +93,12 @@ class _DraggablePlayerState extends State<DraggablePlayer>
                   color: widget.player.hasDragOver
                       ? Colors.blue
                       : widget.player.team == Team.orange
-                          ? Colors.orange
-                          : Colors.pink,
+                          ? Colors.amber[700]!
+                          : Colors.red[600]!,
                 ),
                 color: widget.player.team == Team.orange
-                    ? Colors.orange
-                    : Colors.pink,
+                    ? Colors.amber[700]
+                    : Colors.red[600],
                 image: DecorationImage(image: playerImage),
                 shape: BoxShape.circle),
           ),
