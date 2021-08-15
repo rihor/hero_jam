@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hero_jam_2021/components/bottom_navigation.dart';
 import 'package:hero_jam_2021/helpers/utils.dart';
+import 'package:hero_jam_2021/screens/game_screen.dart';
 import 'package:hero_jam_2021/screens/player_screen.dart';
 import 'package:hero_jam_2021/screens/players_screen.dart';
 
@@ -29,7 +30,7 @@ class _MainPageState extends State<MainPage> {
           controller: MaterialApp.createMaterialHeroController(),
           child: Navigator(
             key: Utils.bottomNav,
-            initialRoute: '/players',
+            initialRoute: '/game',
             onGenerateRoute: (RouteSettings settings) {
               Widget page;
 
@@ -39,6 +40,9 @@ class _MainPageState extends State<MainPage> {
                   break;
                 case '/games':
                   page = GamesScreen();
+                  break;
+                case '/game':
+                  page = GameScreen();
                   break;
                 default:
                   page = PlayersScreen();

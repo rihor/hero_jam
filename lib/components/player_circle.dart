@@ -83,10 +83,21 @@ class _DraggablePlayerState extends State<DraggablePlayer>
           },
           child: Container(
             margin: EdgeInsets.all(50.0),
-            width: 50,
-            height: 50,
+            width: 47,
+            height: 47,
             decoration: BoxDecoration(
-                color: widget.player.hasDragOver ? Colors.blue : Colors.orange,
+                border: Border.all(
+                  width: 3.0,
+                  color: widget.player.hasDragOver
+                      ? Colors.blue
+                      : widget.player.team == Team.orange
+                          ? Colors.orange
+                          : Colors.pink,
+                ),
+                color: widget.player.team == Team.orange
+                    ? Colors.orange
+                    : Colors.pink,
+                image: DecorationImage(image: widget.player.player.image),
                 shape: BoxShape.circle),
           ),
         ),

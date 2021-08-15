@@ -12,23 +12,24 @@ class GameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigation(),
-      body: Padding(
-        padding: EdgeInsets.all(38),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Jogo',
-              style: TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 96,
-              ),
+    final players = Provider.of<PlayersModel>(context).shufflePlayers();
+    return Padding(
+      padding: EdgeInsets.all(38),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Jogo',
+            style: TextStyle(
+              fontWeight: FontWeight.w300,
+              fontSize: 96,
             ),
-            GameField(),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          GameField(players: players),
+        ],
       ),
     );
   }
