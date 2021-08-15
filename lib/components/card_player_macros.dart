@@ -12,7 +12,7 @@ class PlayerMacrosCard extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(4.0),
         ),
-        color: Colors.grey,
+        color: Colors.white12,
       ),
       padding: EdgeInsets.all(20),
       child: Column(

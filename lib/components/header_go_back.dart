@@ -22,10 +22,10 @@ class GoBackHeader extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: 32,
+          width: 24,
         ),
         Text(
-          'VOLTAR PARA LISTA DE JOGADORES',
+          'LISTA DE JOGADORES',
           style: TextStyle(
             letterSpacing: 3,
             fontWeight: FontWeight.normal,

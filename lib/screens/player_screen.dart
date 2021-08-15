@@ -27,8 +27,33 @@ class PlayerScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 32, vertical: 60),
         child: Column(
           children: [
-            GoBackHeader(
-              onGoBack: handleGoBack,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GoBackHeader(
+                  onGoBack: handleGoBack,
+                ),
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFFDD1111),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {
+                    Utils.mainAppNav.currentState?.pushNamed('/game');
+                  },
+                  icon: Icon(Icons.add),
+                  label: Text(
+                    'NOVO RELATÓRIO',
+                    style: TextStyle(
+                      fontSize: 16,
+                      letterSpacing: 3,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                )
+              ],
             ),
             SizedBox(
               height: 38,
@@ -63,7 +88,7 @@ class PlayerScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
-                                    color: Colors.grey[700],
+                                    color: Colors.white12,
                                   ),
                                   child: ListTile(
                                     title: Text('Avaliação física'),
@@ -81,7 +106,7 @@ class PlayerScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
-                                    color: Colors.grey[700],
+                                    color: Colors.white12,
                                   ),
                                   child: ListTile(
                                     title: Text('Campeonato'),
@@ -99,7 +124,7 @@ class PlayerScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
-                                    color: Colors.grey[700],
+                                    color: Colors.white12,
                                   ),
                                   child: ListTile(
                                     title: Text('Avaliação técnica'),
@@ -117,7 +142,7 @@ class PlayerScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
-                                    color: Colors.grey[700],
+                                    color: Colors.white12,
                                   ),
                                   child: ListTile(
                                     title: Text('Avaliação física'),
@@ -168,119 +193,9 @@ class PlayerScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            RightAlignItem(
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFA60512),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  padding: EdgeInsets.all(16),
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.add,
-                      size: 26,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      'NOVO RELATÓRIO',
-                      style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 32,
-            ),
           ],
         ),
       ),
     );
   }
 }
-
-/**
-    Expanded(
-    child: Container(
-    alignment: Alignment.center,
-    child: TextButton(
-    onPressed: () {},
-    child: Text(
-    'Ver mais',
-    style: TextStyle(
-    decoration: TextDecoration.underline,
-    fontWeight: FontWeight.bold,
-    fontSize: 18,
-    color: Colors.black87,
-    ),
-    ),
-    ),
-    ),
-    ),
- */
-
-/**
-
-    Expanded(
-    child: Container(
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-    Text(
-    'Histórico',
-    style: TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 36,
-    color: Colors.black87,
-    ),
-    ),
-    Expanded(
-    child: ListView.builder(
-    itemCount: 10,
-    itemBuilder: (_, index) => ListTile(
-    title: Text('Avaliação $index'),
-    tileColor: Colors.amber,
-    shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(10),
-    ),
-    ),
-    ),
-    ),
-    Center(
-    child: TextButton(
-    onPressed: () {},
-    child: Text(
-    'Ver mais',
-    style: TextStyle(
-    fontSize: 18,
-    fontWeight: FontWeight.bold,
-    decoration: TextDecoration.underline,
-    color: Colors.black87,
-    ),
-    ),
-    ),
-    )
-    ],
-    ),
-    ),
-    ),
-    SizedBox(
-    width: 20,
-    ),
-    Placeholder(),
-
-
- */
