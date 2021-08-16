@@ -56,7 +56,7 @@ class GameScreen extends StatelessWidget {
               style: TextStyleHeading,
             ),
             SizedBox(
-              height: 10,
+              height: 35,
             ),
             GameField(players: players),
           ],

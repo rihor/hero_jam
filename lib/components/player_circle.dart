@@ -28,7 +28,7 @@ class _DraggablePlayerState extends State<DraggablePlayer>
   @override
   void initState() {
     super.initState();
-    _position = widget.player.position;
+    _position = widget.player.position - Offset(5, 0);
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1500));
     _controller.addListener(() {
@@ -47,8 +47,8 @@ class _DraggablePlayerState extends State<DraggablePlayer>
   }
 
   void _runAnimation() {
-    _animation = _controller
-        .drive(Tween<Offset>(begin: _position, end: widget.player.position));
+    _animation = _controller.drive(Tween<Offset>(
+        begin: _position, end: widget.player.position - Offset(5, 0)));
 
     const spring = SpringDescription(
       mass: 50,

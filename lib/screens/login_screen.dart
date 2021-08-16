@@ -65,8 +65,9 @@ class _LoginScreenState extends State<LoginScreen>
                     ),
                     TextFormField(
                       keyboardAppearance: Brightness.dark,
+                      obscureText: true,
                       decoration: InputDecoration(
-                        labelText: "Password",
+                        labelText: "Senha",
                         filled: true,
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.all(20),
