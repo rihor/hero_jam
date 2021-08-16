@@ -18,7 +18,13 @@ class GameScreen extends StatelessWidget {
         children: [
           Text(
             'Jogo',
-            style: TextStyleHeading,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 48,
+              fontFamily: 'Montserrat',
+              color: Colors.white,
+              decoration: TextDecoration.none,
+            ),
           ),
           SizedBox(
             height: 10,
